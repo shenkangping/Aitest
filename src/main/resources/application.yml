@@ -14,11 +14,11 @@ langchain4j:
     dashscope:
       chat-model:
         api-key: <You API Key here>
-        model-name: qwen-plus
+#        model-name: qwen-vl-max  # 多模态模型
+        model-name: qwen-plus  # 文本模型
         temperature: 0.7
         max-tokens: 4096
         top-p: 0.9
-        stream: true
 
 logging:
   level:

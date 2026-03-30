@@ -4,7 +4,7 @@ import dev.langchain4j.data.message.UserMessage;
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.chat.response.ChatResponse;
 import jakarta.annotation.Resource;
-import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,16 +14,20 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-@Log4j
+@Slf4j
 public class AgentHelper {
 
     @Resource
     ChatModel qwenChatModel;
 
-    public String chat(String userMessage) {
+    public String chatWithText(String userMessage) {
         UserMessage question = UserMessage.from(userMessage);
         ChatResponse chat = qwenChatModel.chat(question);
         return chat.aiMessage().text();
     }
 
+    public String chatWithUserMessage(UserMessage userMessage) {
+        ChatResponse chat = qwenChatModel.chat(userMessage);
+        return chat.aiMessage().text();
+    }
 }

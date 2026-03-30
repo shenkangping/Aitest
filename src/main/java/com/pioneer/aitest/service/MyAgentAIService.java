@@ -1,6 +1,7 @@
 package com.pioneer.aitest.service;
 
 import dev.langchain4j.service.SystemMessage;
+import dev.langchain4j.service.UserMessage;
 import dev.langchain4j.service.spring.AiService;
 
 /**
@@ -11,5 +12,5 @@ import dev.langchain4j.service.spring.AiService;
 @AiService
 public interface MyAgentAIService {
     @SystemMessage(fromResource = "my-sys-prompt.txt")
-    String chat(String userMessage);
+    String chat(@UserMessage String userMessage);
 }

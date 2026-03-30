@@ -1,0 +1,19 @@
+server:
+  port: 8099
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: AgentTest
+  profiles:
+    active: local
+
+langchain4j:
+  community:
+    dashscope:
+      chat-model:
+        api-key: <You API Key here>
+        model-name: qwen3-plus
+        temperature: 0.7
+        max-tokens: 4096

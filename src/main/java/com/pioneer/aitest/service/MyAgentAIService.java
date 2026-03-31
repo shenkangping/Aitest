@@ -9,7 +9,7 @@ import dev.langchain4j.service.spring.AiService;
  * @since 11.0
  * Created on 2026/3/30
  */
-@AiService
+//@AiService
 public interface MyAgentAIService {
     @SystemMessage(fromResource = "my-sys-prompt.txt")
     String chat(@UserMessage String userMessage);

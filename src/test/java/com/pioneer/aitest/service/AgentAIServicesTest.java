@@ -51,6 +51,6 @@ class AgentAIServicesTest {
         String res1 = service.chat("你好，我是pioneer");
         log.info(res1);
         String res2 = service.chat("我是谁，你记得我的名字吗");
-        log.info(res2);  // 如果这里记得，说明是 Spring Bean 的问题
+        log.info(res2);
     }
 }

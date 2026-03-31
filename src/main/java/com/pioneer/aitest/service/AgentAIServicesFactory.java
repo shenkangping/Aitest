@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AgentAIServicesFactory {
     @Resource
-    ChatModel qwenChatModel;
+    private ChatModel qwenChatModel;
 
     /**
      * AIService的创建 基础使用
@@ -32,7 +32,7 @@ public class AgentAIServicesFactory {
      * 设置会话记忆 MessageWindowChatMemory
      * */
     @Bean
-    MyAgentAIService agentAIServices() {
+    public MyAgentAIService myAgentAIService() {
         ChatMemory messageWindowChatMemory = MessageWindowChatMemory.withMaxMessages(10);
         return AiServices.builder(MyAgentAIService.class)
                 .chatModel(qwenChatModel)

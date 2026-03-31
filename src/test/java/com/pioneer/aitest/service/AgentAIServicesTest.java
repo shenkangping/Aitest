@@ -36,6 +36,13 @@ class AgentAIServicesTest {
 
 
     @Test
+    void chatWithRag() {
+        String res = myAgentAIService.chat("帮我看下dpdk使用Testpmd测试有哪些常用命令");
+         log.info(res);
+    }
+
+
+    @Test
     void testMemoryDirectly() {
 
         QwenChatModel qwenChatModel = QwenChatModel.builder().apiKey(System.getenv("DASHSCOPE_API_KEY"))

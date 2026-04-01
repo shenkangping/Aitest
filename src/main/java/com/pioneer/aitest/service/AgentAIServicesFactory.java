@@ -6,6 +6,7 @@ import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.rag.content.retriever.ContentRetriever;
 import dev.langchain4j.service.AiServices;
+import dev.langchain4j.service.MemoryId;
 import jakarta.annotation.Resource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,12 +24,27 @@ public class AgentAIServicesFactory {
     @Resource
     ContentRetriever contentRetriever;
 
+    /**
+     * AIService的创建
+     * 测试响应中的来源引用
+     * */
+
+    @Bean
+    public MyAgentAIService myAgentAIService() {
+
+        return AiServices.builder(MyAgentAIService.class)
+                .chatModel(qwenChatModel)
+                .chatMemoryProvider(memoryId->MessageWindowChatMemory.withMaxMessages(10))
+                .contentRetriever(contentRetriever)
+                .build();
+    }
+    
 
     /**
      * AIService的创建
      * 构建 rag 检索
      * */
-    @Bean
+/*    @Bean
     public MyAgentAIService myAgentAIService() {
 
         ChatMemory messageWindowChatMemory = MessageWindowChatMemory.withMaxMessages(10);
@@ -37,7 +53,7 @@ public class AgentAIServicesFactory {
                 .chatMemory(messageWindowChatMemory)
                 .contentRetriever(contentRetriever)
                 .build();
-    }
+    }*/
 
 
     /**

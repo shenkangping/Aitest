@@ -4,6 +4,7 @@ import dev.langchain4j.community.model.dashscope.QwenChatModel;
 import dev.langchain4j.memory.ChatMemory;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.service.AiServices;
+import dev.langchain4j.service.Result;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -41,6 +42,13 @@ class AgentAIServicesTest {
          log.info(res);
     }
 
+
+    @Test
+    void chatWithResult() {
+        Result<String> result = myAgentAIService.chat("123", "帮我看下dpdk使用Testpmd测试有哪些常用命令");
+        log.info(result.content());
+        log.info(result.sources().toString());
+    }
 
     @Test
     void testMemoryDirectly() {
